@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BoardView"></declare-styleable>
+
+    <dimen name="app_logo_size">192dp</dimen>
+    <dimen name="board_view_margin">16dp</dimen>
+    <dimen name="pause_txv_size">22sp</dimen>
+
+    <integer name="number_of_seeds">2000</integer>
+</resources>

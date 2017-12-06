@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Just Another Sudoku</string>
+
+    <string name="app_shared_preferences">com.blogspot.bihaika.justanothersudoku.app_shared_preferences</string>
+    <string name="app_preferences_bitmap_size">com.blogspot.bihaika.justanothersudoku.app_preferences_bitmap_size</string>
+    <string name="app_preferences_is_night_mode">com.blogspot.bihaika.justanothersudoku.app_preferences_is_night_mode</string>
+
+    <string name="board_state_is_paused">com.blogspot.bihaika.justanothersudoku.board_state_is_paused</string>
+    <string name="board_state_board">com.blogspot.bihaika.justanothersudoku.board_state_board</string>
+    <string name="board_state_input_mode">com.blogspot.bihaika.justanothersudoku.board_state_input_mode</string>
+    <string name="board_state_chronometer_time_base">com.blogspot.bihaika.justanothersudoku.board_state_chronometer_time_base</string>
+    <string name="board_state_is_complete">com.blogspot.bihaika.justanothersudoku.board_state_is_complete</string>
+    <string name="board_state_is_custom_mode">com.blogspot.bihaika.justanothersudoku.board_state_is_custom_mode</string>
+    <string name="board_state_selected_cell">com.blogspot.bihaika.justanothersudoku.board_state_selected_cell</string>
+
+    <string name="switch_night_mode">Night Mode</string>
+    <string name="home_btn_easy">Easy</string>
+    <string name="home_btn_medium">Medium</string>
+    <string name="home_btn_hard">Hard</string>
+    <string name="home_btn_custom">Create Board</string>
+
+    <string name="pause_txv_paused">Paused</string>
+    <string name="pause_txv_complete">Complete!\nTime: </string>
+    <string name="pause_btn_resume">Resume</string>
+    <string name="pause_btn_reset">Reset</string>
+    <string name="pause_btn_quit">Quit</string>
+    <string name="pause_btn_solve">Solve</string>
+
+    <string name="play_btn_1">1</string>
+    <string name="play_btn_2">2</string>
+    <string name="play_btn_3">3</string>
+    <string name="play_btn_4">4</string>
+    <string name="play_btn_5">5</string>
+    <string name="play_btn_6">6</string>
+    <string name="play_btn_7">7</string>
+    <string name="play_btn_8">8</string>
+    <string name="play_btn_9">9</string>
+    <string name="play_btn_mark">mark</string>
+    <string name="play_btn_erase">erase</string>
+    <string name="play_btn_finish_edit">Finish edit and start playing</string>
+
+    <string name="tag_board_difficulty">com.blogspot.bihaika.justanothersudoku.board_difficulty</string>
+    <string name="tag_board_seed">com.blogspot.bihaika.justanothersudoku.board_seed</string>
+
+    <string name="ads_app_id">ca-app-pub-2197016572112164~4968072726</string>
+    <string name="ads_ad_unit_id">ca-app-pub-2197016572112164/1914296296</string>
+</resources>

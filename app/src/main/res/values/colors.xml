@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="day_background">#efefef</color>
+    <color name="day_line">#5b4ba3</color>
+    <color name="day_lock_background">#B6ACE7</color>
+    <color name="day_highlight">#7961e8</color>
+    <color name="day_text_color">#1D1C21</color>
+
+    <color name="night_background">#1c1c1c</color>
+    <color name="night_line">#bcbcbc</color>
+    <color name="night_lock_background">#383838</color>
+    <color name="night_highlight">#5F5E63</color>
+    <color name="night_text_color">#FFFAE6</color>
+</resources>
