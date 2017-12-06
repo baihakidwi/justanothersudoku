@@ -24,31 +24,24 @@ import java.util.HashMap;
 
 public class BoardActivity extends Activity {
 
-    public enum MODE {PEN, PENCIL, ERASER}
-
     FrameLayout mActivityFrame;
     LinearLayout mPlayFrame;
     LinearLayout mPauseFrame;
-
     BoardView mBoardView;
     HashMap<Integer, Button> mInputButtons;
     Button mBtnMark;
     Button mBtnErase;
     Chronometer mChronometer;
-
     TableRow mRowInput;
     TableRow mRowFinishEdit;
     Button mBtnFinishEdit;
-
     Switch mSwcNightMode;
     TextView mTextView;
     Button mBtnResume;
     Button mBtnReset;
     Button mBtnQuit;
     Button mBtnSolve;
-
     AdView mAdView;
-
     boolean mIsPaused;
     MODE mMode;
     long mChronometerBase;
@@ -377,10 +370,6 @@ public class BoardActivity extends Activity {
     private void pause() {
         mIsPaused = true;
 
-        if (!mIsComplete) {
-            mChronometerBase = mChronometer.getBase() - SystemClock.elapsedRealtime();
-        }
-
         mChronometer.stop();
 
         mPlayFrame.setVisibility(View.GONE);
@@ -393,11 +382,15 @@ public class BoardActivity extends Activity {
             mBtnMark.setVisibility(View.GONE);
             mBtnErase.setVisibility(View.GONE);
         }
+
+        mChronometer.stop();
         if (mIsComplete) {
             mTextView.setText(getString(R.string.pause_txv_complete) + " " + mChronometer.getText());
         } else {
             mTextView.setText(getString(R.string.pause_txv_paused));
+            mChronometerBase = mChronometer.getBase() - SystemClock.elapsedRealtime();
         }
+
         {
             for (int id = 0; id < Board.BOARD_SIZE; id++) {
                 Button button = mInputButtons.get(id);
@@ -407,11 +400,7 @@ public class BoardActivity extends Activity {
             mBtnErase.setVisibility(View.VISIBLE);
         }
 
-        if (mIsCustomMode) {
-            mBtnSolve.setEnabled(false);
-        } else {
-            mBtnSolve.setEnabled(true);
-        }
+        mBtnSolve.setEnabled(!mIsComplete && !mIsCustomMode);
 
         mAdView.setVisibility(View.VISIBLE);
 
@@ -511,6 +500,8 @@ public class BoardActivity extends Activity {
         }
         super.onDestroy();
     }
+
+    public enum MODE {PEN, PENCIL, ERASER}
 
     private class AsyncTaskBoardSolver extends AsyncTask<Board, Void, Board> {
 
