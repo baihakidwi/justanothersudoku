@@ -110,10 +110,10 @@ public class DataManager {
         if (mImgSets.get(mIsNightMode).isEmpty()) {
             readImage();
         }
-        return (Bitmap) mImgSets.get(mIsNightMode).get(key);
+        return mImgSets.get(mIsNightMode).get(key);
     }
 
-    public void save() {
+    private void save() {
         SharedPreferences sharedPreferences = mAppContext.getSharedPreferences(
                 mAppContext.getString(R.string.app_shared_preferences), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -124,7 +124,7 @@ public class DataManager {
         editor.apply();
     }
 
-    public void load() {
+    private void load() {
         SharedPreferences sharedPreferences = mAppContext.getSharedPreferences(
                 mAppContext.getString(R.string.app_shared_preferences), Context.MODE_PRIVATE);
         mBitmapSize = sharedPreferences.getInt(
@@ -134,7 +134,7 @@ public class DataManager {
     }
 
     public String getBoardSeed(Board.DIFFICULTY difficulty) {
-        String seed = "";
+        String seed;
         Random random = new Random(System.currentTimeMillis());
         int id = random.nextInt(mAppContext.getResources().getInteger(R.integer.number_of_seeds));
         BufferedReader reader = null;

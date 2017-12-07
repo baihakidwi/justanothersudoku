@@ -21,9 +21,11 @@ public class Board implements Serializable {
             mContent = 0;
         }
 
-        public Cell(int content) {
-            mContent = content;
-        }
+// --Commented out by Inspection START (08/12/2017 6:12):
+//        public Cell(int content) {
+//            mContent = content;
+//        }
+// --Commented out by Inspection STOP (08/12/2017 6:12)
 
         public void setContent(int content) {
             mContent = content;
@@ -72,7 +74,7 @@ public class Board implements Serializable {
     public static final int BLOCK_SIZE = 3;
 
     private long mBoardId;
-    private Cell[][] mBoard;
+    private final Cell[][] mBoard;
     private boolean[][] mLock;
     private HashSet<Integer> mChecker;
 
@@ -171,7 +173,7 @@ public class Board implements Serializable {
         return BOARD_STATUS.COMPLETE;
     }
 
-    public BOARD_STATUS validateRow(int row) {
+    private BOARD_STATUS validateRow(int row) {
         mChecker.clear();
         int value;
         for (int column = 0; column < BOARD_SIZE; column++) {
@@ -189,7 +191,7 @@ public class Board implements Serializable {
         return BOARD_STATUS.INCOMPLETE;
     }
 
-    public BOARD_STATUS validateColumn(int column) {
+    private BOARD_STATUS validateColumn(int column) {
         mChecker.clear();
         int value;
         for (int row = 0; row < BOARD_SIZE; row++) {
@@ -207,7 +209,7 @@ public class Board implements Serializable {
         return BOARD_STATUS.INCOMPLETE;
     }
 
-    public BOARD_STATUS validateBlock(int blockRow, int blockColumn) {
+    private BOARD_STATUS validateBlock(int blockRow, int blockColumn) {
         mChecker.clear();
         int value;
         for (int row = blockRow; row < blockRow + BLOCK_SIZE; row++) {
@@ -231,11 +233,7 @@ public class Board implements Serializable {
         mLock = new boolean[BOARD_SIZE][BOARD_SIZE];
         for (int row = 0; row < BOARD_SIZE; row++) {
             for (int column = 0; column < BOARD_SIZE; column++) {
-                if (mBoard[row][column].getValue() != 0) {
-                    mLock[row][column] = true;
-                } else {
-                    mLock[row][column] = false;
-                }
+                mLock[row][column] = mBoard[row][column].getValue() != 0;
             }
         }
     }
@@ -255,19 +253,17 @@ public class Board implements Serializable {
 
     private boolean fillCell(Point cell) {
         if (cell == null) {
-            if (validateBoard() == BOARD_STATUS.COMPLETE) {
-                return true;
-            }
-            return false;
+            return validateBoard() == BOARD_STATUS.COMPLETE;
         }
         for (int cellValue = 1; cellValue <= BOARD_SIZE; cellValue++) {
             if (!valueIsConflicted(cell, cellValue)) {
                 mBoard[cell.y][cell.x].setValue(cellValue);
+                Point prevCell = new Point(cell);
                 cell = next(cell);
                 if (fillCell(cell)) {
                     return true;
                 }
-                cell = prev(cell);
+                cell = prevCell;
                 mBoard[cell.y][cell.x].clear();
             }
         }

@@ -24,29 +24,29 @@ import java.util.HashMap;
 
 public class BoardActivity extends Activity {
 
-    FrameLayout mActivityFrame;
-    LinearLayout mPlayFrame;
-    LinearLayout mPauseFrame;
-    BoardView mBoardView;
-    HashMap<Integer, Button> mInputButtons;
-    Button mBtnMark;
-    Button mBtnErase;
-    Chronometer mChronometer;
-    TableRow mRowInput;
-    TableRow mRowFinishEdit;
-    Button mBtnFinishEdit;
-    Switch mSwcNightMode;
-    TextView mTextView;
-    Button mBtnResume;
-    Button mBtnReset;
-    Button mBtnQuit;
-    Button mBtnSolve;
-    AdView mAdView;
-    boolean mIsPaused;
-    MODE mMode;
-    long mChronometerBase;
-    boolean mIsComplete;
-    boolean mIsCustomMode;
+    private FrameLayout mActivityFrame;
+    private LinearLayout mPlayFrame;
+    private LinearLayout mPauseFrame;
+    private BoardView mBoardView;
+    private HashMap<Integer, Button> mInputButtons;
+    private Button mBtnMark;
+    private Button mBtnErase;
+    private Chronometer mChronometer;
+    private TableRow mRowInput;
+    private TableRow mRowFinishEdit;
+    private Button mBtnFinishEdit;
+    private Switch mSwcNightMode;
+    private TextView mTextView;
+    private Button mBtnResume;
+    private Button mBtnReset;
+    private Button mBtnQuit;
+    private Button mBtnSolve;
+    private AdView mAdView;
+    private boolean mIsPaused;
+    private MODE mMode;
+    private long mChronometerBase;
+    private boolean mIsComplete;
+    private boolean mIsCustomMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -447,7 +447,7 @@ public class BoardActivity extends Activity {
         }
     }
 
-    public void submitSolvedBoard(Board board) {
+    private void submitSolvedBoard(Board board) {
         if (mIsPaused) {
             if (board != null && board.getBoardId() == mBoardView.getBoard().getBoardId()) {
                 mBoardView.setBoard(board);

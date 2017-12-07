@@ -7,7 +7,7 @@ import android.view.View;
  * Created by Baihaki Dwi on 01/12/2017.
  */
 
-public class BoardViewTouchListener implements View.OnTouchListener, View.OnClickListener {
+class BoardViewTouchListener implements View.OnTouchListener, View.OnClickListener {
 
     private BoardActivity mBoardActivity;
     private int mx;

@@ -17,13 +17,13 @@ import com.bumptech.glide.Glide;
 
 public class HomeActivity extends Activity {
 
-    FrameLayout mHomeFrame;
-    Switch mSwcNightMode;
-    ImageView mImgAppLogo;
-    Button mBtnEasy;
-    Button mBtnMedium;
-    Button mBtnHard;
-    Button mBtnCustom;
+    private FrameLayout mHomeFrame;
+    private Switch mSwcNightMode;
+    private ImageView mImgAppLogo;
+    private Button mBtnEasy;
+    private Button mBtnMedium;
+    private Button mBtnHard;
+    private Button mBtnCustom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
