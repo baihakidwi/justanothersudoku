@@ -51,10 +51,11 @@ public class HomeActivity extends Activity {
                 if (cellSize != DataManager.getInstance(getApplicationContext()).getBitmapSize()) {
                     DataManager.getInstance(getApplicationContext()).setBitmapSize(cellSize);
                 }
-                DataManager.getInstance(getApplicationContext()).readImage();
                 rootView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
             }
         });
+
+        DataManager.getInstance(getApplicationContext()).readImage();
 
         mSwcNightMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -116,6 +117,15 @@ public class HomeActivity extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                for (int i = 0; i < 10 && !DataManager.getInstance(getApplicationContext()).isReady(); i++) {
+                    try {
+                        Thread.sleep(10);
+                    } catch (InterruptedException ex) {
+
+                    }
+                }
+
                 String boardSeed = DataManager.getInstance(getApplicationContext()).getBoardSeed(difficulty);
                 Intent intent = new Intent(activity, BoardActivity.class);
                 intent.putExtra(getString(R.string.tag_board_difficulty), difficulty);

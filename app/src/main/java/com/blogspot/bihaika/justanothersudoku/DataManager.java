@@ -49,6 +49,10 @@ public class DataManager {
         return mDataManager;
     }
 
+    public boolean isReady() {
+        return (mImgSets.get(true).size() == Board.BOARD_SIZE && mImgSets.get(false).size() == Board.BOARD_SIZE);
+    }
+
     public int getBitmapSize() {
         return mBitmapSize;
     }
@@ -68,8 +72,13 @@ public class DataManager {
     }
 
     public void readImage() {
-        mImgSets.get(true).clear();
-        mImgSets.get(false).clear();
+
+        Bitmap bitmap = mImgSets.get(true).get(Board.BOARD_SIZE - 1);
+        if (bitmap != null && isReady()) {
+            if (bitmap.getHeight() == mBitmapSize) {
+                return;
+            }
+        }
 
         int[][] imgIds = {
                 {R.drawable.b1, R.drawable.b2, R.drawable.b3

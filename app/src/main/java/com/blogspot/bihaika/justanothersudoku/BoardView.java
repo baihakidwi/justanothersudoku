@@ -112,10 +112,12 @@ public class BoardView extends View {
 
         initPainter();
 
-        if (mBoard != null) {
-            for (int row = 0; row < Board.BOARD_SIZE; row++) {
-                for (int column = 0; column < Board.BOARD_SIZE; column++) {
-                    drawCell(canvas, row, column);
+        if (DataManager.getInstance(mContext).isReady()) {
+            if (mBoard != null) {
+                for (int row = 0; row < Board.BOARD_SIZE; row++) {
+                    for (int column = 0; column < Board.BOARD_SIZE; column++) {
+                        drawCell(canvas, row, column);
+                    }
                 }
             }
         }
